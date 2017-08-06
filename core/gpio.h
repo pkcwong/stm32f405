@@ -15,6 +15,7 @@ class GPIO
 	void init(GPIOMode_TypeDef Mode, GPIOOType_TypeDef OType, GPIOPuPd_TypeDef PuPd, GPIOSpeed_TypeDef Speed);
 	void init(GPIOPuPd_TypeDef PuPd);
 	void init(GPIOOType_TypeDef OType, GPIOPuPd_TypeDef PuPd, GPIOSpeed_TypeDef Speed = GPIO_High_Speed);
+	void init(GPIOOType_TypeDef OType, GPIOPuPd_TypeDef PuPd, uint8_t AF);
 	void write(BitAction BitVal);
 	uint8_t read();
 	uint16_t getPinSource();
