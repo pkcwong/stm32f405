@@ -45,17 +45,17 @@ void TIM::init(uint16_t Prescaler, uint16_t CounterMode, uint32_t Period, uint16
 	this->TIM_InitStructure.TIM_ClockDivision = ClockDivision;
 	this->TIM_InitStructure.TIM_RepetitionCounter = 0;
 	TIM_TimeBaseInit(this->base, &(this->TIM_InitStructure));
-	switch (this->IRQ)
+	if (this->IRQ == TIM2_IRQn)
 	{
-		case TIM2_IRQn:
-			TIM2_interrupt = interrupt;
-			break;
-		case TIM3_IRQn:
-			TIM3_interrupt = interrupt;
-			break;
-		case TIM4_IRQn:
-			TIM4_interrupt = interrupt;
-			break;
+		TIM2_interrupt = interrupt;
+	}
+	else if (this->IRQ == TIM3_IRQn)
+	{
+		TIM3_interrupt = interrupt;
+	}
+	else if (this->IRQ == TIM4_IRQn)
+	{
+		TIM4_interrupt = interrupt;
 	}
 	TIM_ITConfig(this->base, TIM_IT_Update, ENABLE);
 	NVIC_InitTypeDef NVIC_InitStructure;
