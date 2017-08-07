@@ -153,6 +153,38 @@ void GPIO::init(GPIOOType_TypeDef OType, GPIOPuPd_TypeDef PuPd, uint8_t AF)
 	GPIO_Init(this->Port, &(this->GPIO_InitStructure));
 }
 
+void GPIO::rcc(FunctionalState state)
+{
+	if (this->Port == GPIOA)
+	{
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOA, state);
+	}
+	else if (this->Port == GPIOB)
+	{
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOB, state);
+	}
+	else if (this->Port == GPIOC)
+	{
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOC, state);
+	}
+	else if (this->Port == GPIOD)
+	{
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOD, state);
+	}
+	else if (this->Port == GPIOE)
+	{
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOE, state);
+	}
+	else if (this->Port == GPIOF)
+	{
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOF, state);
+	}
+	else if (this->Port == GPIOG)
+	{
+		RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOG, state);
+	}
+}
+
 void GPIO::write(BitAction BitVal)
 {
 	GPIO_WriteBit(this->Port, this->GPIO_InitStructure.GPIO_Pin, BitVal);
